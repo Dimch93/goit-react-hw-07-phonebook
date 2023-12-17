@@ -1,12 +1,12 @@
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { qwery } from '../../redux/sliceFilter';
-import { getFilter } from '../../redux/selectors';
+import { changeFilter } from '../../redux/sliceFilter';
+import { selectFilter } from '../../redux/selectors';
 
 export const Filter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
-  const onChangeFilter = e => dispatch(qwery(e.currentTarget.value));
+  const onChangeFilter = e => dispatch(changeFilter(e.currentTarget.value));
 
   return (
     <>

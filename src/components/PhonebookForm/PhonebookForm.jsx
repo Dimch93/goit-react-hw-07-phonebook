@@ -1,14 +1,14 @@
 import css from './PhonebookForm.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from '../../redux/selectors';
-import { addContact } from '../../redux/operations';
+import { selectContacts } from '../../redux/selectors';
+import { addContacts } from '../../redux/operations';
 
 export const PhonebookForm = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -24,7 +24,7 @@ export const PhonebookForm = () => {
     ) {
       alert(`${name} is alredy in contacts`);
     } else {
-      dispatch(addContact({ name, number }));
+      dispatch(addContacts({ name, number }));
     }
     reset();
   };
